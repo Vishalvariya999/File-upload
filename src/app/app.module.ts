@@ -10,11 +10,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartComponent } from './components/chart/chart.component';
+import { TestComponent } from './components/test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
     PracticeDirective,
-    ChartComponent
+    ChartComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

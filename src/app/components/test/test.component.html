@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="row border m-5 rounded">
+        <div class="col-5 p-2">
+            <h3 class="h3 text-center">{{title}}</h3>
+            <hr />
+            <form class="row g-3 needs-validation" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+                <div class="col-lg-12">
+                    <label for="" class="form-label p-1">Roll no</label>
+                    <input type="text" class="form-control" placeholder="Enter roll no" formControlName="rno">
+                </div>
+                <div class="col-lg-6">
+                    <label for="" class="form-label p-1">First name</label>
+                    <input type="text" class="form-control" placeholder="Enter surname or first name"
+                        formControlName="first_name">
+                </div>
+                <div class="col-lg-6">
+                    <label for="" class="form-label p-1">Last name</label>
+                    <input type="text" class="form-control" placeholder="Enter last name" formControlName="last_name">
+                </div>
+                <div class="col-lg-6">
+                    <label for="" class="form-label p-1">Email address</label>
+                    <input type="text" class="form-control" placeholder="Enter email address"
+                        formControlName="email_id">
+                </div>
+                <div class="col-lg-6">
+                    <label for="" class="form-label p-1">Phone no</label>
+                    <input type="number" class="form-control" placeholder="Enter phone number"
+                        formControlName="phone_number">
+                </div>
+                <div class="col-lg-12">
+                    <label for="" class="form-label p-1">Course</label>
+                    <select class="form-select mb-3" formControlName="course">
+                        <option value="" selected>Select course</option>
+                        <option *ngFor="let data of courseData" [value]="data">{{data}}</option>
+                    </select>
+                </div>
+                <!-- <button class="btn btn-primary">Submit</button>     -->
+                <div class="mt-2">
+                    <button class="btn btn-primary" type="submit">
+                        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                            aria-hidden="true"></span>
+                        {{btnName}}
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-7 p-2">
+            <h3 class="h3 text-center">Student Details</h3>
+            <hr />
+            <table class="table table-striped table-hover">
+                <thead class="table table-dark">
+                    <tr>
+                        <th>Rno</th>
+                        <th>Surname</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Course</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of studentsDetails">
+                        <td>{{ data?.rno }}</td>
+                        <td>{{ data?.first_name }}</td>
+                        <td>{{ data?.last_name }}</td>
+                        <td>{{ data?.email_id }}</td>
+                        <td>{{ data?.phone_number }}</td>
+                        <td>{{ data?.course }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-success mx-2" (click)="onPatch(data)"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                    <path fill-rule="evenodd"
+                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                </svg> Edit</button>
+                            <button class="btn btn-sm btn-outline-danger" (click)="onDelete(data.rno)"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                </svg> Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

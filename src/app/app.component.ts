@@ -161,10 +161,10 @@ export class AppComponent implements OnInit {
   // console.log('event :>> ', event?.target?.files);
   // }
 
-  // onDeleteFile(index: any) {
-  //   console.log('index :>> ', index);
-  //   this.files.splice(index, 1);
-  // }
+  onDeleteFile(index: any) {
+    console.log('index :>> ', index);
+    this.files.splice(index, 1);
+  }
 
   // uploadFilesSimulator(index: number) {
   //   setTimeout(() => {
